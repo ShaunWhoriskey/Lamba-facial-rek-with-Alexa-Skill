@@ -1,2 +1,7 @@
 # Lamba-facial-rek-with-Alexa-Skill
-This repo collects all the Node.js scripts that were used to complete a serverless facial recognition system as part of my final year project in a BSc in Computer Services Management
+This repo collects all the Node.js scripts that were used to complete a serverless facial recognition system as part of my final year project in a BSc in Computer Services Management. The scripts were used as separate Lambda functions to carry out tasks such as object detection, facial recognition and SES email. It also includes some of the coding used to configure a custom Alexa skill which was created using the Alexa SKills Developer along with Lambda and used as the front end of the system. 
+
+The project used a raspberry pi to detect motion, capture an image and upload it to an S3 bucket. This triggered an upload event which was passed to the wilson-S3-trigger lambda fucntion which initiates the step function wilson-step-function. The step fucntion then executes suite of Lambda functions which comprises the systems core fucntionality. The Alexa wake word and skill tree was configured using the Alexa developer console accompanied by a Lambda function which contained the functionality for each invoked word.
+
+The finished system worked as a security system for the eldery or vulnerable, that captured images of persons approaching the premises and allowed the user to ask the system "who was there?" or "what did it see?" to which the system could respond with the identified persons name or notify them if the person was not recognised. The system also notified the user or selected users via email with the attached captured image and indentified objects within the image.
+
