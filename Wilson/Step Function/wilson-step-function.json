@@ -1,0 +1,57 @@
+{
+    "Comment": "Process incoming images",
+    "StartAt": "Check-Wilson-Image",
+    "States": {
+
+        "Check-Wilson-Image" : {
+            "Type": "Parallel",
+            "End": true,
+            "Branches": [
+                {
+                    "StartAt": "wilson-image-rekognition",
+                    "States": {
+                        "wilson-image-rekognition": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:***************:function:wilson-image-rekognition",
+                            "Next": "wilson-check-person-labels"
+                        },
+                        "wilson-check-person-labels": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:***************:function:wilson-check-person-labels",
+                            "Next": "wilson-mailer"
+                        },
+                      "wilson-mailer": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:***************:function:wilson-mailer",
+                            "End": true
+                        }
+                }
+                },
+                {
+
+                    "StartAt": "wilson-face-rekognition",
+                    "States": {
+
+                        "wilson-face-rekognition": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:***************:function:wilson-face-rekognition",
+                            "Next": "wait_five_seconds"
+                        },
+                      "wait_five_seconds": {
+                        "Type": "Wait",
+                        "Seconds": 5,
+                        "Next": "wilson-archive-image"
+                      },
+                      "wilson-archive-image": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:***************:function:wilson-archive-image",
+                            "End": true
+        }
+                    }
+                }
+               
+            ]
+        }
+    }
+}
+

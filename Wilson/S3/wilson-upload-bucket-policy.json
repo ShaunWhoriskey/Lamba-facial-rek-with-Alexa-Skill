@@ -1,0 +1,122 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:user/Wilson-pi"
+            },
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:role/service-role/wilson-image-analysis"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:role/lambda_wilsons3_trigger"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:role/service-role/wilson-face-rekognition-role-tmzsbq0n"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:role/service-role/wilson-archive-image-role-jdf3zxso"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:role/wilson-email-IAM"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::***************:user/wilson-mobile"
+            },
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:List*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wilson-upload2",
+                "arn:aws:s3:::wilson-upload2/*"
+            ]
+        }
+    ]
+}
